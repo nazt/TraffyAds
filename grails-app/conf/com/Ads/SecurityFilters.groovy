@@ -1,4 +1,4 @@
-/*package com.Ads
+package com.Ads
 
 class SecurityFilters {
 
@@ -7,14 +7,13 @@ class SecurityFilters {
            before = {
    			  if (params.controller == null) 
 				{ 
-	                 redirect(controller:'user',action:'login')*/
+					redirect(controller:'user',action:'login')
 	                 /* When using Tomcat and the controller is null you must 
 	                    return true. Otherwise an exception is thrown. */
-/*	                 return true
+					return true
 			    }
-				else if (controllerName.equals('oauth'))
+				else if (controllerName.equals('oauth') || controllerName.equals('user') )
 				{
-					println 'dd'
 					return true
 				}				
 	          else if(!session.user && !actionName.equals('login')) {
@@ -29,4 +28,4 @@ class SecurityFilters {
        }       
     }
     
-}*/
+}
