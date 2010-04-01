@@ -7,23 +7,7 @@ class DataController {
 	def apiUrl = "http://twitter.com/statuses/user_timeline.json"
     def oauthService
 
-    def index = {
-
-	
-	        def response = oauthService.accessResource(
-	                apiUrl, 'twitter', [key:session.oauthToken.key, secret:session.oauthToken.secret])
-	        def statuses = JSON.parse(response)
-			def payload = ''
-
-/*			println statuses.get(status).user.get("screen_name")*/
-/*	        for (status in statuses)
-			{
-	        	payload += status.get("text") + "\n\n"
-				println status.user.get("screen_name")
-
-			}*/
-			println statuses.user.screen_name.get(0)
-			
+    def index = {			
         redirect(action: "list", params: params)
     }
 
