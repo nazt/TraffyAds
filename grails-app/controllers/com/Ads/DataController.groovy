@@ -9,15 +9,7 @@ class DataController {
 
     def index = {
 
-		 	println 'session'+ session
-	        if (session.oauthToken == null) {
-			 	println "error no session!"
-	            redirect(uri:"/")
-				return ;
-	        }
-
-	        if (params?.apiUrl) apiUrl = params.apiUrl
-
+	
 	        def response = oauthService.accessResource(
 	                apiUrl, 'twitter', [key:session.oauthToken.key, secret:session.oauthToken.secret])
 	        def statuses = JSON.parse(response)
