@@ -15,7 +15,15 @@ class DataController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [dataInstanceList: Data.list(params), dataInstanceTotal: Data.count()]
     }
+	def random = { 
+		params.max = Math.min(params.max ? params.int('max') : 10, 100)
 
+		def dataList = Data.list(params)
+		dataList.each{ println "${it.message}  ${it.frequency}"}
+
+		render 'randomed' 
+        ///[dataInstanceList: Data.list(params), dataInstanceTotal: Data.count()]		
+		}
     def create = {
         def dataInstance = new Data()
         dataInstance.properties = params
