@@ -4,8 +4,8 @@ class UserController {
 		def apiUrl = "http://twitter.com/statuses/user_timeline.json"
 	    def oauthService
  		def allowedUser=["NAzT", 'traffy','wapst7'].collect { it.toLowerCase()  }
-    def index = {  render 'index' }
-	def login = {   }
+    def index = { flash.message ="already logged in";  redirect(action:'login')}
+	def login = { if(session.user) redirect(controller:'data',action:'list') }
 	def permission = {  
 	 	
         if (session.oauthToken == null) {
@@ -22,14 +22,13 @@ class UserController {
 			if(  authenticatedUser.toLowerCase() in allowedUser)
 			{
 				session["user"]  = authenticatedUser;
-/*				render 'Hello ' +  authenticatedUser
-				render " Allowed."*/
-			  redirect(controller:'data',action:'list')
+			  	redirect(controller:'data',action:'list')
 			}
 			else
 			{
-				render 'Hello ' +  authenticatedUser
-				render " Don't Allowed."
+				flash.message=" account ${authenticatedUser} :  permission denied."
+				redirect(controller:'user',action:'login')
+/*				render "(${authenticatedUser}) permission denied."*/
 			}
 		 }
 }
