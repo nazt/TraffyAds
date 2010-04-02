@@ -20,5 +20,4 @@ stacktrace.log
 /target
 # project release file
 *.war
-
-
+.DS_Store
