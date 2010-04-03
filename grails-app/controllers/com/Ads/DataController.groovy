@@ -23,7 +23,27 @@ class DataController {
 			messageList=messageList.flatten()
 			Collections.shuffle(messageList)   
 			new Stat( adsMessage:messageList.get(0) ).save()
-			render messageList.get(0)	
+/*			render messageList.get(0) as XML	*/
+			switch(params.id?.toLowerCase()) {
+				case "json":
+				render(builder:"json") {
+					data(message:messageList.get(0).message)
+				}		
+				break
+				case "xml":
+				render(contentType:"text/xml") {
+				    data {
+							data(message:messageList.get(0).message)
+				    }
+				}
+				break
+				case "text":
+					render messageList.get(0)
+				break
+				default:
+            		redirect(action: "random", id: "text")
+				break
+			}
 		}
     def create = {
         def dataInstance = new Data()
