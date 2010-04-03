@@ -16,13 +16,14 @@ class DataController {
         [dataInstanceList: Data.list(params), dataInstanceTotal: Data.count()]
     }
 	def random = { 
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-
-		def dataList = Data.list(params)
-		dataList.each{ println "${it.message}  ${it.frequency}"}
-
-		render 'randomed' 
-        ///[dataInstanceList: Data.list(params), dataInstanceTotal: Data.count()]		
+		def tmp
+		def messageList=[]
+		Data.list().each{  tmp=[] ; tmp << it;  messageList <<  tmp * it.frequency  }
+			//println " ${it.message}  ${it.frequency}"
+			messageList=messageList.flatten()
+			Collections.shuffle(messageList)   
+			new Stat( adsMessage:messageList.get(0) ).save()
+			render messageList.get(0)	
 		}
     def create = {
         def dataInstance = new Data()
