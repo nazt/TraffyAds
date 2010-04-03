@@ -50,6 +50,22 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="stat"><g:message code="data.stat.label" default="Stat" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: dataInstance, field: 'stat', 'errors')}">
+                                    
+<ul>
+<g:each in="${dataInstance?.stat?}" var="s">
+    <li><g:link controller="stat" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+</g:each>
+</ul>
+<g:link controller="stat" action="create" params="['data.id': dataInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'stat.label', default: 'Stat')])}</g:link>
+
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="adsType"><g:message code="data.adsType.label" default="Ads Type" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: dataInstance, field: 'adsType', 'errors')}">

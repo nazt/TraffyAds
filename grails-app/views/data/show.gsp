@@ -44,6 +44,19 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="data.stat.label" default="Stat" /></td>
+                            
+                            <td valign="top" style="text-align: left;" class="value">
+                                <ul>
+                                <g:each in="${dataInstance.stat}" var="s">
+                                    <li><g:link controller="stat" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="data.adsType.label" default="Ads Type" /></td>
                             
                             <td valign="top" class="value"><g:link controller="type" action="show" id="${dataInstance?.adsType?.id}">${dataInstance?.adsType?.encodeAsHTML()}</g:link></td>

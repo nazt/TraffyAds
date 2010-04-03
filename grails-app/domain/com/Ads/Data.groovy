@@ -2,6 +2,7 @@ package com.Ads
 
 class Data {
 	static belongsTo = [ adsType : Type ]  
+	static hasMany = [stat:Stat]		
 	String message
 	Integer frequency=1
 	static mapping = {
