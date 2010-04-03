@@ -22,27 +22,22 @@ class DataController {
 			//println " ${it.message}  ${it.frequency}"
 			messageList=messageList.flatten()
 			Collections.shuffle(messageList)   
-			new Stat( adsMessage:messageList.get(0) ).save()
-/*			render messageList.get(0) as XML	*/
+			def randomedData=messageList.get(0)
+			def randomed2render=[message:randomedData.message,frequency:randomedData.frequency,type:randomedData.adsType.name]
+			new Stat( adsMessage:randomedData).save()
 			switch(params.id?.toLowerCase()) {
 				case "json":
-				render(builder:"json") {
-					data(message:messageList.get(0).message)
-				}		
-				break
+					  render randomed2render  as JSON 
+					break
 				case "xml":
-				render(contentType:"text/xml") {
-				    data {
-							data(message:messageList.get(0).message)
-				    }
-				}
+					render(text:randomed2render as XML, contentType: 'text/xml', encoding: 'UTF-8')					
 				break
 				case "text":
-					render messageList.get(0)
-				break
+					render randomedData
+					break
 				default:
             		redirect(action: "random", id: "text")
-				break
+					break
 			}
 		}
     def create = {
