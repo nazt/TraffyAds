@@ -10,8 +10,8 @@
     <body>
 		 
 	 
-        <div class="message">logged in with ${session.user}</div>
-        ${flash.message}
+
+
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Home</a></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
@@ -19,7 +19,7 @@
         <div class="body">
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            <div class="message">@${session.user} ${flash.message}</div>
             </g:if>
             <div class="list">
                 <table>
@@ -31,6 +31,8 @@
                             <g:sortableColumn property="message" title="${message(code: 'data.message.label', default: 'Message')}" />
                         
                             <g:sortableColumn property="frequency" title="${message(code: 'data.frequency.label', default: 'Frequency')}" />
+
+                            <g:sortableColumn property="frequency" title="${message(code: 'data.frequency.label', default: 'Hit	')}" />
                         
                             <th><g:message code="data.adsType.label" default="Ads Type" /></th>
                    	    
@@ -43,9 +45,8 @@
                             <td><g:link action="show" id="${dataInstance.id}">${fieldValue(bean: dataInstance, field: "id")}</g:link></td>
                         
                             <td>${fieldValue(bean: dataInstance, field: "message")}</td>
-                        
                             <td>${fieldValue(bean: dataInstance, field: "frequency")}</td>
-                        
+                            <td>${dataInstance.stat.size()}</td>                                                
                             <td>${fieldValue(bean: dataInstance, field: "adsType")}</td>
                         
                         </tr>

@@ -1,7 +1,7 @@
 package com.Ads
 
 class SecurityFilters {
-
+	def allowController=["oauth","user"]
     def filters = {
        loginCheck(controller:'*', action:'*') {
            before = {
@@ -12,10 +12,11 @@ class SecurityFilters {
 	                    return true. Otherwise an exception is thrown. */
 					return true
 			    }
-				else if (controllerName.equals('oauth') || controllerName.equals('user') )
+				else if (  actionName.equals('random')  || (controllerName in allowController) )
 				{
 					return true
-				}				
+				}
+ 			
 	          else if(!session.user && !actionName.equals('login')) {
                   redirect(controller:'user',action:'login')
                   return false

@@ -61,9 +61,9 @@ log4j = {
     // Example of changing the log pattern for the default console
     // appender:
     //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+    appenders {
+       console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+    }
 
 
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
@@ -92,8 +92,8 @@ oauth {
         requestTokenUrl="http://twitter.com/oauth/request_token"
         accessTokenUrl="http://twitter.com/oauth/access_token"
         authUrl="http://twitter.com/oauth/authorize"
-        consumer.key="SXvZU5VmjTZxA7ecczaA"
-        consumer.secret="rsLfblF25ktQvs2n2YWPGhNxqFin0JA268dlLOkC1s"
+        consumer.key="jC90o7Uu8zQmWKoPq0mmg"
+        consumer.secret="wZhzi6LcDvD9HaRsc8wTDxtFLAuEI6q50xmdiB7Jjjs"
     }
 }
 

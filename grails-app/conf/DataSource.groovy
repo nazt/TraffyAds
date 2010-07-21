@@ -18,15 +18,21 @@ environments {
 		}
 	}
 	test {
-		dataSource {
-			dbCreate = "update"
-			url = "jdbc:hsqldb:mem:testDb"
-		}
+	  dataSource {
+	   dbCreate = "update"
+	   url="jdbc:postgresql://localhost:5432/test"
+	   driverClassName = "org.postgresql.Driver"
+	                        username = "tester"
+	                        password = "tester"
+	  }
 	}
 	production {
-		dataSource {
-			dbCreate = "update"
-			url = "jdbc:hsqldb:file:prodDb;shutdown=true"
-		}
+	  dataSource {
+	   dbCreate = "update"
+	   url="jdbc:postgresql://203.185.97.51:5432/natz"
+	   driverClassName = "org.postgresql.Driver"
+	                        username = "natz"
+	                        password = "natz2traffy"
+	  }
 	}
 }

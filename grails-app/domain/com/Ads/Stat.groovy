@@ -11,4 +11,8 @@ class Stat {
 		adsMessage()
 		dateCreated(nullable:true)
     }
+	String toString()
+	{
+		"${dateCreated}"
+	}
 }

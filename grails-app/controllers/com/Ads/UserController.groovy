@@ -3,8 +3,8 @@ import grails.converters.*
 class UserController {
 		def apiUrl = "http://twitter.com/statuses/user_timeline.json"
 	    def oauthService
- 		def allowedUser=["NAzT", 'traffy','wapst7'].collect { it.toLowerCase()  }
-    def index = { flash.message ="already logged in";  redirect(action:'login')}
+ 		def allowedUser=["NAzT", 'traffy','wapst7','wasawaz'].collect { it.toLowerCase()  }
+    def index = { flash.message ="already logged in"; redirect(controller:'data',action:'list') }
 	def login = { if(session.user) redirect(controller:'data',action:'list') }
 	def permission = {  
 	 	

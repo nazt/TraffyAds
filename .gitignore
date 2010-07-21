@@ -9,6 +9,7 @@
 # to be specific, you could replace "/*" below with your project name,
 #  e.g. "foobar.launch" (no slash)
 .classpath
+.class
 .project
 .settings
 /*.launch
@@ -21,3 +22,4 @@ stacktrace.log
 # project release file
 *.war
 .DS_Store
+lib/postgresql-8.4-701.jdbc3.jar

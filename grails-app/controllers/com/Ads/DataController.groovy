@@ -28,10 +28,28 @@ class DataController {
 			switch(params.id?.toLowerCase()) {
 				case "json":
 					  render randomed2render  as JSON 
+					/*render(builder:"json") {
+											data(message:randomedData.message)
+										}*/
 					break
+				case "test":
+					render Data.list() as XML
+					break;
+			
 				case "xml":
 					render(text:randomed2render as XML, contentType: 'text/xml', encoding: 'UTF-8')					
 				break
+				case "xml2":
+	               render(contentType:"text/xml") {
+					 airports{
+					        airport(id:1, iata:2){
+					          "official-name"("a.name")
+					          city("a.city")
+					          location(latitude:"a.lat", longitude:"a.lng")
+					        }
+					}
+	               }
+					break
 				case "text":
 					render randomedData
 					break
